@@ -4,10 +4,10 @@ metadata:
   name: {{ include "ddclient.fullname" . }}
   labels:
     {{- include "ddclient.labels" . | nindent 4 }}
+  annotations:
+    secret.reloader.stakater.com/reload: "{{ include "ddclient.fullname" . }}"
 spec:
-  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-  {{- end }}
   selector:
     matchLabels:
       {{- include "ddclient.selectorLabels" . | nindent 6 }}
@@ -27,24 +27,20 @@ spec:
       serviceAccountName: {{ include "ddclient.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      volumes:
+        - name: config
+          secret:
+            secretName: {{ include "ddclient.fullname" . }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
+          {{- if .Values.image.digest }}@{{ .Values.image.digest }}{{- end }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - name: http
-              containerPort: 80
-              protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /
-              port: http
+          volumeMounts:
+            - mountPath: /defaults
+              name: config
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
