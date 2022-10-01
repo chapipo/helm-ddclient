@@ -3,12 +3,12 @@ name: ddclient
 description: |
   Ddclient is a Perl client used to update dynamic DNS entries for accounts on Dynamic DNS Network Service Provider.
 type: application
-version: 0.1.0
+version: 0.1.1
 appVersion: "3.9.1"
 icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ddclient-logo.png
 annotations:
   artifacthub.io/changes: |
-    - [Changed] First release
+    - "[Changed] Fix for annotations"
   artifacthub.io/images: |
     - name: ddclient
       image: linuxserver/ddclient
