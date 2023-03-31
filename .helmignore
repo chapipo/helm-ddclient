@@ -21,3 +21,7 @@
 .idea/
 *.tmproj
 .vscode/
+.gitlab-ci.yml
+.pre-commit-config.yaml
+README.md.gotmpl
+.prettierignore
