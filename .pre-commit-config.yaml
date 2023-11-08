@@ -7,7 +7,7 @@ repos:
       - id: check-signoff
 
   - repo: https://github.com/gruntwork-io/pre-commit
-    rev: v0.1.22
+    rev: v0.1.23
     hooks:
       - id: helmlint
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -32,7 +32,7 @@ repos:
 
   # Run commitlint check on the commit message.
   - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
-    rev: v9.5.0
+    rev: v9.7.0
     hooks:
       - id: commitlint
         stages: [commit-msg]
