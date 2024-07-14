@@ -1,0 +1,28 @@
+apiVersion: v1
+entries:
+  ddclient:
+  - annotations:
+      artifacthub.io/changes: |
+        - kind: changed
+          description: Bumped ddclient to 3.10.0
+      artifacthub.io/images: |
+        - name: ddclient
+          image: linuxserver/ddclient
+      artifacthub.io/links: |
+        - name: Ddclient source repo
+          url: https://github.com/ddclient/ddclient
+        - name: Helm Repo
+          url: https://gitlab.com/alexander-chernov/helm/ddclient
+    apiVersion: v2
+    appVersion: 3.11.2
+    created: "2024-07-14T11:15:23.040922822Z"
+    description: 'Ddclient is a Perl client used to update dynamic DNS entries for
+      accounts on Dynamic DNS Network Service Provider. '
+    digest: 48fb72db62d443547dc0ac5cc74120991f41f3adcca641ea9822a041f674e323
+    icon: https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/ddclient-logo.png
+    name: ddclient
+    type: application
+    urls:
+    - https://github.com/chapipo/helm-ddclient/releases/download/ddclient-0.3.2/ddclient-0.3.2.tgz
+    version: 0.3.2
+generated: "2024-07-14T11:15:23.0409321Z"
